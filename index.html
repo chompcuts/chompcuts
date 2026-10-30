@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CHOMPcuts — Gameplay Video Editor</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09070e;--p:#8b5cf6;--p2:#5b3fc4;--glow:#b9a2f5;--tx:#f2eefa;--mut:#9a93ad;--lime:#c8ff2e;--line:#251c3b;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 50% -10%,#1b1230,var(--bg) 55%) fixed;color:var(--tx);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
+.px{font-family:'Press Start 2P','Courier New',monospace}
+header{position:relative;min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 5vw;overflow:hidden}
+.face{position:relative;z-index:1;width:min(56vw,300px);aspect-ratio:1;margin-bottom:26px;border-radius:50%;overflow:hidden;background:#000;border:3px solid var(--p2);pointer-events:none;animation:grin 5s ease-in-out infinite,glitchimg 3.2s infinite}
+@keyframes glitchimg{0%,92%,100%{filter:none;translate:0}94%{filter:drop-shadow(4px 0 var(--lime)) drop-shadow(-4px 0 var(--p));translate:3px}96%{filter:drop-shadow(-4px 0 var(--lime)) drop-shadow(4px 0 var(--p));translate:-3px}}
+.face img{width:140%;margin:-20% 0 0 -20%;display:block}
+@keyframes grin{0%,100%{transform:translateY(0) scale(1)}40%,52%{transform:translateY(-12px) scale(1)}46%{transform:translateY(-12px) scale(1.14,.88)}}
+h1{margin:0;font-size:clamp(28px,7.5vw,84px);line-height:1.2;letter-spacing:2px;animation:glitch 3.2s infinite}
+h1 span{color:var(--glow)}
+h1 i{display:inline-block;font-style:normal;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+@keyframes glitch{0%,92%,100%{text-shadow:none;transform:none}94%{text-shadow:4px 0 var(--lime),-4px 0 var(--p);transform:translateX(3px)}96%{text-shadow:-4px 0 var(--lime),4px 0 var(--p);transform:translateX(-3px)}}
+.role{margin-top:24px;padding:12px 18px;font-size:clamp(9px,1.7vw,14px);color:var(--lime);border:2px solid var(--lime);border-radius:4px;position:relative;z-index:3;animation:rolep 2s ease-in-out infinite}
+@keyframes rolep{50%{background:rgba(200,255,46,.12);transform:scale(1.04)}}
+.tag{margin:22px 0 0;font-size:clamp(15px,2.2vw,22px);color:var(--mut);max-width:620px}
+.btn{display:inline-block;margin-top:34px;padding:16px 26px;font-size:11px;color:#12091f;background:var(--lime);text-decoration:none;border:0;border-radius:6px;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--lime);animation:ring 1.6s ease-in-out infinite;cursor:pointer;position:relative;z-index:3;transition:transform .2s}
+.btn:hover{transform:translateY(-3px) scale(1.05)}
+.btn.o{background:transparent;color:var(--tx);box-shadow:0 0 0 2px var(--glow);animation:none}
+.btn.o:hover{background:var(--p2)}
+@keyframes ring{50%{box-shadow:0 0 0 3px var(--bg),0 0 0 9px rgba(200,255,46,.4)}}
+section{padding:80px 5vw}
+h2{font-size:clamp(14px,2.4vw,22px);margin:0 0 10px;text-align:center}
+h2 b{color:var(--lime)}
+.sub{text-align:center;color:var(--mut);margin:0 auto 40px;max-width:560px}
+.list{display:flex;flex-direction:column;gap:38px;max-width:860px;margin:0 auto}
+.item{cursor:pointer}
+.media{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000;transition:border-color .25s,transform .25s}
+.item:hover .media{border-color:var(--lime);transform:translateY(-3px)}
+.media video,.media img{position:relative;width:100%;height:100%;object-fit:cover;display:block}
+.media .fb{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;font-size:10px;line-height:1.8;color:var(--mut);background:linear-gradient(135deg,#2a1d4a,#12091f)}
+.media .play{position:absolute;inset:0;display:grid;place-items:center;font-size:30px;color:var(--lime);text-shadow:0 2px 14px #000;transition:background .2s;pointer-events:none}
+.item:hover .play{background:rgba(9,7,14,.35)}
+.cap{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px}
+.cap strong{font-size:clamp(15px,2vw,19px)}
+.cap em{font-style:normal;font-size:9px;background:var(--p2);padding:7px 9px;border-radius:4px;white-space:nowrap}
+.about{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:28px;max-width:1000px;margin:36px auto 0;align-items:stretch}
+.sheet{border:1px solid var(--line);border-radius:12px;padding:24px;background:#100b1b;text-align:center}
+.av{width:130px;height:130px;margin:0 auto 16px;border-radius:50%;overflow:hidden;border:3px solid var(--p2);background:#000}
+.av img{width:140%;margin:-20% 0 0 -20%;display:block}
+.nm{font-size:13px;margin-bottom:10px}
+.cls{font-size:9px;color:var(--lime);line-height:1.7;margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.chips span{font-size:13px;border:1px solid var(--line);padding:6px 10px;border-radius:20px;color:var(--mut)}
+.chips b{color:var(--tx)}
+.bio{border:1px solid var(--line);border-radius:12px;padding:28px;background:#100b1b}
+.bio p{margin:0 0 24px;font-size:17px;line-height:1.65;color:#d9d2ea}
+.bio strong{color:var(--lime)}
+.tools{display:flex;align-items:center;gap:28px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line)}
+.tl-label{font-size:9px;color:var(--mut)}
+.tool{display:flex;align-items:center;gap:12px;font-weight:600;font-size:15px;color:#d9d2ea}
+.ico{display:grid;place-items:center;width:46px;height:46px;border-radius:10px;background:#00005b;font-style:normal;font-weight:700;font-size:19px;letter-spacing:-.5px;border:2px solid;transition:transform .25s}
+.tool:hover .ico{transform:translateY(-4px)}
+.ico.pr{color:#ea77ff;border-color:#ea77ff}
+.ico.ae{color:#9999ff;border-color:#9999ff}
+.ct{text-align:center}
+.cts{display:flex;flex-wrap:wrap;gap:18px;justify-content:center}
+.cts .btn{margin-top:30px}
+.hnd{margin-top:26px;font-size:15px;color:var(--mut)}
+.hnd a{color:var(--glow)}
+footer{text-align:center;padding:30px 5vw 50px;font-size:9px;color:var(--mut)}
+.modal{position:fixed;inset:0;z-index:100;display:none;place-items:center;background:rgba(5,3,9,.94);padding:4vw}
+.modal.o{display:grid}
+.modal video{max-width:100%;max-height:86vh;border-radius:10px}
+.modal iframe{display:none;width:min(92vw,1100px);aspect-ratio:16/9;height:auto;max-height:86vh;border:0;border-radius:10px;background:#000;color-scheme:normal}
+.modal.y iframe{display:block}
+.modal.y video{display:none}
+.modal button{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:18px;font-size:11px;background:var(--lime);color:#12091f;border:0;padding:12px;border-radius:6px;cursor:pointer}
+.modal .ar{top:50%;right:auto;width:52px;height:52px;margin-top:-26px;padding:0;border-radius:50%;border:2px solid var(--p2);background:rgba(9,7,14,.8);color:var(--tx);font-size:20px;transition:.2s}
+.modal .ar:hover{background:var(--lime);color:#12091f;border-color:var(--lime)}
+.modal #mpv{left:2vw}
+.modal #mnx{right:2vw}
+#toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 28px);transform:translate(-50%,140px);z-index:120;font-size:10px;line-height:1.6;background:var(--lime);color:#12091f;padding:14px 18px;border-radius:8px;transition:.4s;text-align:center;max-width:92vw;white-space:pre-line}
+#toast.s{transform:translate(-50%,0)}
+body.rave{animation:hue 2s linear infinite}
+@keyframes hue{to{filter:hue-rotate(360deg)}}
+@media(max-width:760px){.about{grid-template-columns:1fr}.modal .ar{width:42px;height:42px;margin-top:-21px}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="face"><img src="assets/logo.png" alt="CHOMPcuts monster grin logo"></div>
+  <h1 class="px"><i>C</i><i style="animation-delay:.1s">H</i><i style="animation-delay:.2s">O</i><i style="animation-delay:.3s">M</i><i style="animation-delay:.4s">P</i><span><i style="animation-delay:.5s">c</i><i style="animation-delay:.6s">u</i><i style="animation-delay:.7s">t</i><i style="animation-delay:.8s">s</i></span></h1>
+  <div class="role px">🎮 GAMEPLAY EDITOR</div>
+  <p class="tag">Video editing for YouTubers</p>
+  <a class="btn px" href="#work">PRESS START ▶</a>
+</header>
+
+<section id="work">
+  <h2 class="px">LONG FORM <b>WORKS</b></h2>
+  <p class="sub">Selected gameplay edits. Click a video to watch it full screen with sound.</p>
+  <div class="list">
+    <div class="item" data-yt="h5MstL1OjFM"><div class="media"><div class="fb px">BRAEXEL TRIAL<br>WATCH ON YOUTUBE</div><img src="https://i.ytimg.com/vi/h5MstL1OjFM/hqdefault.jpg" alt="" onerror="this.style.display='none'"><div class="play px">▶</div></div><div class="cap"><strong>BraeXel trial</strong><em class="px">BATTLE ROYALE</em></div></div>
+    <div class="item" data-s="assets/trees.mp4#t=0.5"><div class="media"><video muted loop playsinline preload="metadata"></video><div class="play px">▶</div></div><div class="cap"><strong>Trending Games</strong><em class="px">GAMING EDIT</em></div></div>
+    <div class="item" data-s="assets/tenz.mp4#t=0.5"><div class="media"><video muted loop playsinline preload="metadata"></video><div class="play px">▶</div></div><div class="cap"><strong>Valorant</strong><em class="px">FPS</em></div></div>
+    <div class="item" data-s="assets/raft.mp4#t=0.5"><div class="media"><video muted loop playsinline preload="metadata"></video><div class="play px">▶</div></div><div class="cap"><strong>Minecraft</strong><em class="px">SURVIVAL</em></div></div>
+    <div class="item" data-s="assets/gta.mp4#t=0.5"><div class="media"><video muted loop playsinline preload="metadata"></video><div class="play px">▶</div></div><div class="cap"><strong>Grand Theft Auto V</strong><em class="px">GTA V</em></div></div>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="px">ABOUT THE <b>EDITOR</b></h2>
+  <div class="about">
+    <div class="sheet">
+      <div class="av"><img src="assets/logo.png" alt=""></div>
+      <div class="nm px">CHOMPcuts</div>
+      <div class="cls px">CLASS: GAMEPLAY EDITOR</div>
+      <div class="chips"><span><b>3 years</b> of XP</span><span>Gameplay</span><span>Premiere + AE</span></div>
+    </div>
+    <div class="bio">
+      <p>I’m a gameplay editor with <strong>3 years of experience</strong> turning raw gameplay and stream VODs into polished, watchable videos. Every cut, zoom and sound effect serves the footage and the story.</p>
+      <div class="tools"><span class="tl-label px">TOOLS</span><div class="tool"><i class="ico pr">Pr</i><span>Premiere Pro</span></div><div class="tool"><i class="ico ae">Ae</i><span>After Effects</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="hire" class="ct">
+  <h2 class="px"><b>CONTACT</b></h2>
+  <p class="sub">Send me a message and let’s work together!</p>
+  <div class="cts"><button class="btn px" id="em" type="button">✉ COPY EMAIL</button><button class="btn px o" id="dc" type="button">DISCORD: chompedt</button><a class="btn px o" href="https://x.com/Chompcuts" target="_blank" rel="noopener">X: @Chompcuts</a></div>
+  <p class="hnd">chompcuts@gmail.com · Discord <b>chompedt</b> · X <a href="https://x.com/Chompcuts" target="_blank" rel="noopener">@Chompcuts</a><br>Prefer your mail app? <a href="mailto:chompcuts@gmail.com">Open it here</a></p>
+</section>
+
+<footer class="px">© CHOMPcuts · INSERT COIN TO CONTINUE<br><br>↑ ↑ ↓ ↓ ← → ← → B A</footer>
+
+<div class="modal" id="md"><button class="px" id="cl">✕ CLOSE</button><button class="ar" id="mpv" type="button" aria-label="Previous video">◀</button><video id="mv" controls playsinline></video><iframe id="my" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" title="Video player"></iframe><button class="ar" id="mnx" type="button" aria-label="Next video">▶</button></div>
+<div id="toast" class="px"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const toastEl=$('#toast');let tt;
+function toast(m,ms){toastEl.textContent=m;toastEl.classList.add('s');clearTimeout(tt);tt=setTimeout(()=>toastEl.classList.remove('s'),ms||2400)}
+
+// Video list + full-screen viewer
+const items=$$('.item'),n=items.length,md=$('#md'),mv=$('#mv'),fr=$('#my');let cur=0;
+const embed=id=>`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1`;
+items.forEach((it,i)=>{
+  const v=it.querySelector('video');
+  if(v){v.src=it.dataset.s;it.onmouseenter=()=>v.play().catch(()=>{});it.onmouseleave=()=>v.pause()}
+  it.onclick=()=>{if(v)v.pause();cur=i;show(it);md.classList.add('o');toast('NOW PLAYING ▶')}
+});
+function show(it){const y=it.dataset.yt;md.classList.toggle('y',!!y);
+  if(y){mv.pause();mv.removeAttribute('src');fr.src=embed(y)}
+  else{fr.removeAttribute('src');mv.src=it.dataset.s.split('#')[0];mv.play().catch(()=>{})}}
+function step(d){cur=(cur+d+n)%n;show(items[cur])}
+function closeModal(){md.classList.remove('o');mv.pause();mv.removeAttribute('src');fr.removeAttribute('src')}
+$('#cl').onclick=closeModal;md.onclick=e=>{if(e.target===md)closeModal()};
+$('#mpv').onclick=()=>step(-1);$('#mnx').onclick=()=>step(1);
+addEventListener('keydown',e=>{const o=md.classList.contains('o'),d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(o&&d){e.preventDefault();step(d)}if(e.key==='Escape')closeModal()});
+
+// Copy buttons
+async function copy(t){
+  try{await navigator.clipboard.writeText(t);return true}catch(e){}
+  try{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();const ok=document.execCommand('copy');a.remove();return ok}catch(e){return false}
+}
+function wire(id,text,label,done,msg){const b=$(id);b.onclick=async()=>{const ok=await copy(text);b.textContent=ok?done:label;if(ok){toast(msg,3200)}else{toast('Couldn’t copy automatically. Here it is: '+text,4500)}setTimeout(()=>b.textContent=label,2800)}}
+wire('#em','chompcuts@gmail.com','✉ COPY EMAIL','✔ COPIED!','✔ EMAIL COPIED TO YOUR CLIPBOARD\nchompcuts@gmail.com');
+wire('#dc','chompedt','DISCORD: chompedt','✔ COPIED!','✔ DISCORD USER COPIED TO YOUR CLIPBOARD\nchompedt');
+
+// Konami code
+const K=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];let ki=0;
+addEventListener('keydown',e=>{ki=(e.key===K[ki])?ki+1:(e.key===K[0]?1:0);if(ki===K.length){ki=0;document.body.classList.toggle('rave');toast('GG! · RAVE MODE')}});
+</script>
+</body>
+</html>
