@@ -120,6 +120,13 @@ body.rave{animation:hue 2s linear infinite}
 .modal iframe{display:none;width:min(92vw,1100px);aspect-ratio:16/9;height:auto;max-height:86vh;border:0;border-radius:10px;background:#000;color-scheme:normal}
 .modal.y iframe{display:block}
 .modal.y video{display:none}
+.tools{display:flex;align-items:center;gap:28px;flex-wrap:wrap;padding-top:22px;border-top:1px solid var(--line)}
+.tl-label{font-size:9px;color:var(--mut)}
+.tool{display:flex;align-items:center;gap:12px;font-weight:600;font-size:15px;color:#d9d2ea}
+.ico{display:grid;place-items:center;width:46px;height:46px;border-radius:10px;background:#00005b;font-style:normal;font-weight:700;font-size:19px;letter-spacing:-.5px;border:2px solid;transition:transform .25s}
+.tool:hover .ico{transform:translateY(-4px)}
+.ico.pr{color:#ea77ff;border-color:#ea77ff}
+.ico.ae{color:#9999ff;border-color:#9999ff}
 @media(max-width:760px){nav a.l{display:none}.card{width:88%;margin-left:-44%}.about{grid-template-columns:1fr}.perks{grid-template-columns:1fr}.perks div{border-right:0;border-bottom:1px solid var(--line)}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
 </style>
@@ -142,10 +149,10 @@ body.rave{animation:hue 2s linear infinite}
 </header>
 
 <section id="work">
-  <h2 class="px">STREAM VOD <b>SAMPLES</b></h2>
-  <p class="sub">Raw gameplay in, polished edits out. Click the glowing clip to watch it full screen with sound.</p>
+  <h2 class="px">LONG FORM <b>WORKS</b></h2>
+  <p class="sub">Selected gameplay edits. Click the highlighted video to watch it full screen with sound.</p>
   <div class="stage" id="stage">
-    <div class="card" data-yt="h5MstL1OjFM" data-t="Fortnite"><div class="fb px">FORTNITE<br>WATCH ON YOUTUBE</div><img class="th" src="https://i.ytimg.com/vi/h5MstL1OjFM/hqdefault.jpg" alt="" onerror="this.style.display='none'"><div class="sh"></div><span class="new px">PLAY ME!</span><div class="lab"><strong>Fortnite</strong><em class="px">BATTLE ROYALE</em></div><div class="play px">▶</div></div>
+    <div class="card" data-yt="h5MstL1OjFM" data-t="BraeXel trial"><div class="fb px">BRAEXEL TRIAL<br>WATCH ON YOUTUBE</div><img class="th" src="https://i.ytimg.com/vi/h5MstL1OjFM/hqdefault.jpg" alt="" onerror="this.style.display='none'"><div class="sh"></div><span class="new px">PLAY ME!</span><div class="lab"><strong>BraeXel trial</strong><em class="px">BATTLE ROYALE</em></div><div class="play px">▶</div></div>
     <div class="card" data-s="assets/trees.mp4#t=0.5"><video muted loop playsinline preload="metadata"></video><div class="lab"><strong>Trending Games</strong><em class="px">GAMING EDIT</em></div><div class="play px">▶ WATCH</div></div>
     <div class="card" data-s="assets/tenz.mp4#t=0.5"><video muted loop playsinline preload="metadata"></video><div class="lab"><strong>Valorant</strong><em class="px">FPS</em></div><div class="play px">▶ WATCH</div></div>
     <div class="card" data-s="assets/raft.mp4#t=0.5"><video muted loop playsinline preload="metadata"></video><div class="lab"><strong>Minecraft</strong><em class="px">SURVIVAL</em></div><div class="play px">▶ WATCH</div></div>
@@ -165,11 +172,7 @@ body.rave{animation:hue 2s linear infinite}
     </div>
     <div class="bio">
       <p>I’m a gameplay editor with <strong>3 years of experience</strong> turning raw gameplay and stream VODs into polished, watchable videos. Every cut, zoom and sound effect serves the footage and the story.</p>
-      <div class="tl">
-        <div class="ph"></div>
-        <div class="trk"><span class="px">V1</span><div class="clip c1">Adobe Premiere Pro</div></div>
-        <div class="trk"><span class="px">FX</span><div class="clip c2">Adobe After Effects</div></div>
-      </div>
+      <div class="tools"><span class="tl-label px">TOOLS</span><div class="tool"><i class="ico pr">Pr</i><span>Premiere Pro</span></div><div class="tool"><i class="ico ae">Ae</i><span>After Effects</span></div></div>
     </div>
   </div>
   <div class="perks">
