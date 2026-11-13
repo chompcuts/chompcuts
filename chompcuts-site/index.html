@@ -117,8 +117,8 @@ footer{border-top:1px solid var(--line);padding:48px 24px;text-align:center;colo
   <h2>Minecraft</h2>
   <p class="sub">Minecraft gameplay edits.</p>
   <div class="grid">
-    <div class="item feat" tabindex="0" data-yt="a29oPqSbDeI"><div class="badge">FEATURED</div><div class="media"><div class="fb">Minecraft<br>Watch on YouTube</div><img src="https://i.ytimg.com/vi/a29oPqSbDeI/hqdefault.jpg" alt="" onerror="this.style.display='none'"></div><div class="cap"><strong>Featured Minecraft edit</strong><em>MINECRAFT</em></div></div>
-    <div class="item" tabindex="0" data-s="assets/raft.mp4#t=0.5"><div class="media"><video muted loop playsinline preload="metadata"></video></div><div class="cap"><strong>Minecraft</strong><em>SURVIVAL</em></div></div>
+    <div class="item feat" tabindex="0" data-yt="a29oPqSbDeI"><div class="badge">FEATURED</div><div class="media"><div class="fb">Minecraft<br>Watch on YouTube</div></div><div class="cap"><strong>Featured Minecraft edit</strong><em>MINECRAFT</em></div></div>
+    <div class="item" tabindex="0" data-yt="S2G_tOytESs"><div class="media"><div class="fb">Minecraft<br>Watch on YouTube</div></div><div class="cap"><strong>Minecraft</strong><em>SURVIVAL</em></div></div>
   </div>
 </section>
 
@@ -126,7 +126,7 @@ footer{border-top:1px solid var(--line);padding:48px 24px;text-align:center;colo
   <h2>Long Form Works</h2>
   <p class="sub">Selected gameplay edits. Click a video to watch it full screen with sound.</p>
   <div class="grid">
-    <div class="item" tabindex="0" data-yt="h5MstL1OjFM"><div class="media"><div class="fb">BraeXel trial<br>Watch on YouTube</div><img src="https://i.ytimg.com/vi/h5MstL1OjFM/hqdefault.jpg" alt="" onerror="this.style.display='none'"></div><div class="cap"><strong>BraeXel trial</strong><em>BATTLE ROYALE</em></div></div>
+    <div class="item" tabindex="0" data-yt="h5MstL1OjFM"><div class="media"><div class="fb">BraeXel trial<br>Watch on YouTube</div></div><div class="cap"><strong>BraeXel trial</strong><em>BATTLE ROYALE</em></div></div>
     <div class="item" tabindex="0" data-s="assets/trees.mp4#t=0.5"><div class="media"><video muted loop playsinline preload="metadata"></video></div><div class="cap"><strong>Trending Games</strong><em>GAMING EDIT</em></div></div>
     <div class="item" tabindex="0" data-s="assets/tenz.mp4#t=0.5"><div class="media"><video muted loop playsinline preload="metadata"></video></div><div class="cap"><strong>Valorant</strong><em>FPS</em></div></div>
     <div class="item" tabindex="0" data-s="assets/gta.mp4#t=0.5"><div class="media"><video muted loop playsinline preload="metadata"></video></div><div class="cap"><strong>Grand Theft Auto V</strong><em>GTA V</em></div></div>
@@ -171,7 +171,13 @@ const embed=id=>`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsin
 const PLAY='<div class="play"><i><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></i></div>';
 items.forEach((it,i)=>{
   const v=it.querySelector('video');
-  it.querySelector('.media').insertAdjacentHTML('beforeend',PLAY);
+  const mdi=it.querySelector('.media');
+  if(it.dataset.yt){const id=it.dataset.yt,TH=['maxresdefault','sddefault','hqdefault','mqdefault'],u=k=>`https://i.ytimg.com/vi/${id}/${TH[k]}.jpg`,im=new Image();let k=0;
+    im.alt='';im.referrerPolicy='no-referrer';
+    im.onload=()=>{if(im.naturalWidth<=120&&++k<TH.length)im.src=u(k)};
+    im.onerror=()=>{if(++k<TH.length)im.src=u(k);else im.remove()};
+    im.src=u(0);mdi.appendChild(im)}
+  mdi.insertAdjacentHTML('beforeend',PLAY);
   if(v){v.src=it.dataset.s;it.onmouseenter=()=>v.play().catch(()=>{});it.onmouseleave=()=>v.pause()}
   it.onclick=()=>{if(v)v.pause();cur=i;show(it);md.classList.add('o')};
   it.onkeydown=e=>{if(e.key==='Enter')it.click()};
